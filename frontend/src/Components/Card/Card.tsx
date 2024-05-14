@@ -7,7 +7,7 @@ interface Props {
   showType: string;
 }
 
-const Card = ({title, runtime, posterLink, showType}: Props) => {
+const Card: React.FC<Props> = ({title, runtime, posterLink, showType}: Props): JSX.Element => {
   return (
     <div className='card'>
       <p>{posterLink}</p>

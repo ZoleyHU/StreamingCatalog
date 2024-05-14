@@ -3,7 +3,7 @@ import Card from '../Card/Card'
 
 interface Props {}
 
-const CardList = (props: Props) => {
+const CardList : React.FC<Props> = (props: Props) : JSX.Element => {
   return (
     <div>
       <Card title='A vak asszony visszanéz' runtime={10} posterLink='kép helye' showType='film'/>
