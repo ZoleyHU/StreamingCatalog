@@ -1,16 +1,21 @@
 import React from 'react'
 
-interface Props {}
+interface Props {
+  title: string;
+  runtime: number;
+  posterLink: string;
+  showType: string;
+}
 
-const Card = (props: Props) => {
+const Card = ({title, runtime, posterLink, showType}: Props) => {
   return (
     <div className='card'>
-      <p>placeholder for poster</p>
+      <p>{posterLink}</p>
         <div className='details'>
-            <h2>Title</h2>
-            <p>Type: Movie</p>
+            <h2>{title}</h2>
+            <p>{showType}</p>
         </div>
-        <p>Lenght 3423 mins</p>
+        <p>Lenght {runtime} mins</p>
     </div>
   )
 }
