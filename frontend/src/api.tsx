@@ -10,11 +10,12 @@ export const searchShows = async (query: string) => {
         //    id: "tt0068646",
         //});
         const data = await client.showsApi.searchShowsByTitle({
-            title: "query",
-            country: ""
+            title: query,
+            country: "hu"
         })
         return data;
     } catch (error) {
         console.log("error: ", error);
+        return "An error has occured. Please try again later."
     }
 }
