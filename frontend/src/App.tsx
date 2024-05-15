@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { ChangeEvent, SyntheticEvent, useState } from 'react';
 import './App.css';
 import CardList from './Components/CardList/CardList';
+import Search from './Components/Search/Search';
+import {Show} from "streaming-availability";
+import { searchShows } from './api';
 
 function App() {
+  const [search, setSearch] = useState<string>("");
+  const [searchResult, setSearchResult] = useState<Show[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("hu");
+
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      setSearch(event.target.value);
+  }
+
+  //TODO: fix possible bug, sometimes multiple copies of the same movie appear in one search
+  const onSearchSubmit = async (event: SyntheticEvent) => {
+      event.preventDefault();
+      const result = await searchShows(search, selectedCountry);
+      if (typeof result === "string") {
+        setErrorMessage(result);
+      } else if(Array.isArray(result)) {
+        setSearchResult(result);
+      }
+  }
+
+  const onCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCountry(event.target.value);
+  }
+
   return (
     <div className="App">
-      <CardList />
+      <Search search={search} selectedCountry={selectedCountry} onSearchSubmit={onSearchSubmit} onSearchChange={onSearchChange} onCountryChange={onCountryChange}/>
+      {errorMessage && <h1>{errorMessage}</h1>}
+      <CardList searchResults={searchResult}/>
     </div>
   );
 }
