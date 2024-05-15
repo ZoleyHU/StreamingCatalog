@@ -7,17 +7,18 @@ import { searchShows } from './api';
 
 function App() {
   const [search, setSearch] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<Show[]>([])
-  const [errorMessage, setErrorMessage] = useState<string>("")
+  const [searchResult, setSearchResult] = useState<Show[]>([]);
+  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [selectedCountry, setSelectedCountry] = useState<string>("hu");
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
       event.preventDefault();
       setSearch(event.target.value);
   }
 
-  const onClickHandler = async (event: SyntheticEvent) => {
+  const onSearchSubmit = async (event: SyntheticEvent) => {
       event.preventDefault();
-      const result = await searchShows(search)
+      const result = await searchShows(search, selectedCountry);
       if (typeof result === "string") {
         setErrorMessage(result);
       } else if(Array.isArray(result)) {
@@ -25,9 +26,13 @@ function App() {
       }
   }
 
+  const onCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCountry(event.target.value);
+  }
+
   return (
     <div className="App">
-      <Search search={search} onClickHandler={onClickHandler} onChangeHandler={onChangeHandler}/>
+      <Search search={search} selectedCountry={selectedCountry} onSearchSubmit={onSearchSubmit} onSearchChange={onSearchChange} onCountryChange={onCountryChange}/>
       {errorMessage && <h1>{errorMessage}</h1>}
       <CardList searchResults={searchResult}/>
     </div>
