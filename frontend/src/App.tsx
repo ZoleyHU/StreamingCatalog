@@ -28,7 +28,8 @@ function App() {
   return (
     <div className="App">
       <Search search={search} onClickHandler={onClickHandler} onChangeHandler={onChangeHandler}/>
-      <CardList />
+      {errorMessage && <h1>{errorMessage}</h1>}
+      <CardList searchResults={searchResult}/>
     </div>
   );
 }

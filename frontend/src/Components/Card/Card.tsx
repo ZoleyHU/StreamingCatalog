@@ -1,21 +1,19 @@
 import React from 'react'
+import { Show } from 'streaming-availability';
 
 interface Props {
-  title: string;
-  runtime: number;
-  posterLink: string;
-  showType: string;
+  id: string;
+  show: Show;
 }
-
-const Card: React.FC<Props> = ({title, runtime, posterLink, showType}: Props): JSX.Element => {
+//TODO: add stream options in a list next to each other
+const Card: React.FC<Props> = ({id, show}: Props): JSX.Element => {
   return (
     <div className='card'>
-      <p>{posterLink}</p>
-        <div className='details'>
-            <h2>{title}</h2>
-            <p>{showType}</p>
-        </div>
-        <p>Lenght {runtime} mins</p>
+      <img src={show.imageSet.verticalPoster.w240} alt={show.title + " poster"}/>
+      <div className='details'>
+        <h2>{show.title}</h2>
+        <p>{show.showType}</p>
+      </div>
     </div>
   )
 }

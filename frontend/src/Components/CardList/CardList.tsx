@@ -1,16 +1,23 @@
 import React from 'react'
 import Card from '../Card/Card'
+import { Show } from 'streaming-availability'
 
-interface Props {}
+interface Props {
+  searchResults: Show[]
+}
 
-const CardList : React.FC<Props> = (props: Props) : JSX.Element => {
-  return (
-    <div>
-      <Card title='A vak asszony visszanéz' runtime={10} posterLink='kép helye' showType='film'/>
-      <Card title='sajt' runtime={100} posterLink='kép helye2' showType='sori'/>
-      <Card title='Szósz' runtime={1430} posterLink='kép helye3' showType='sauce'/>
-    </div>
-  )
+const CardList : React.FC<Props> = ({searchResults}: Props) : JSX.Element => {
+  return <>
+    {
+      searchResults.length > 0 ? (
+        searchResults.map((show) => {
+          return <Card id={show.id} key={show.imdbId} show={show}/>
+        })
+      ) : (
+        <h1>No results</h1>
+      )
+    }
+    </>
 }
 
 export default CardList
