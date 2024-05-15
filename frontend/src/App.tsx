@@ -16,6 +16,7 @@ function App() {
       setSearch(event.target.value);
   }
 
+  //TODO: fix possible bug, sometimes multiple copies of the same movie appear in one search
   const onSearchSubmit = async (event: SyntheticEvent) => {
       event.preventDefault();
       const result = await searchShows(search, selectedCountry);

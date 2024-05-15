@@ -5,7 +5,6 @@ interface Props {
   id: string;
   show: Show;
 }
-//TODO: replace "hu" with a prop from the country search
 //TODO: add price and quality for rental/buyable movies, on their own page
 const Card: React.FC<Props> = ({id, show}: Props): JSX.Element => {
   return (
