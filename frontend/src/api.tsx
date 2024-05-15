@@ -6,9 +6,6 @@ export const searchShows = async (query: string) => {
         const client = new streamingAvailability.Client(new streamingAvailability.Configuration({
             apiKey: RAPID_API_KEY
         }));
-        //const data = await client.showsApi.getShow({
-        //    id: "tt0068646",
-        //});
         const data = await client.showsApi.searchShowsByTitle({
             title: query,
             country: "hu"

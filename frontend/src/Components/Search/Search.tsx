@@ -5,7 +5,8 @@ interface Props {
     onClickHandler: (event: SyntheticEvent) => void;
     onChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-
+//TODO: add country selection
+//TODO: advanced search feature
 const Search : React.FC<Props> = ({search, onClickHandler, onChangeHandler}: Props) : JSX.Element => {
   return (
     <div>
