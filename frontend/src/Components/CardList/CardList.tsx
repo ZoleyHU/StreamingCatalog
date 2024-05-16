@@ -7,17 +7,17 @@ interface Props {
 }
 
 const CardList : React.FC<Props> = ({searchResults}: Props) : JSX.Element => {
-  return <>
+  return <div className='flex flex-wrap w-full text-center'>
     {
       searchResults.length > 0 ? (
         searchResults.map((show) => {
           return <Card id={show.id} key={show.imdbId} show={show}/>
         })
       ) : (
-        <h1>No results</h1>
+        <p className='text-3xl font-semibold m-auto'>No results</p>
       )
     }
-    </>
+    </div>
 }
 
 export default CardList
