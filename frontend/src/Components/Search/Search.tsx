@@ -11,15 +11,13 @@ interface Props {
 //TODO: get all supported countries
 const Search : React.FC<Props> = ({search, selectedCountry, onSearchSubmit, onSearchChange, onCountryChange}: Props) : JSX.Element => {
   return (
-    <>
-    <form onSubmit={onSearchSubmit}>
+    <form className='' onSubmit={onSearchSubmit}>
       <input value={search} onChange={onSearchChange}/>
       <select defaultValue="hu" value={selectedCountry} onChange={(e) => onCountryChange(e)}>
         <option value={"hu"}>Hungary</option>
         <option value={"us"}>United States</option>
       </select>
     </form>
-    </>
   )
 }
 

@@ -13,7 +13,6 @@ const Card: React.FC<Props> = ({id, show}: Props): JSX.Element => {
       <div className='details'>
         <h2>{show.title + " (" + (show.releaseYear===undefined ? (show.firstAirYear +"-"+ show.lastAirYear) : show.releaseYear ) + ")"}</h2>
         <p>{show.showType}</p>
-        <p>{show.showType==='series' && show.seasonCount + " Seasons"}</p>
       </div>
     </div>
   )
