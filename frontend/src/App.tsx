@@ -4,6 +4,7 @@ import CardList from './Components/CardList/CardList';
 import Search from './Components/Search/Search';
 import {Show} from "streaming-availability";
 import { searchShows } from './api';
+import Header from './Components/Header/Header';
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -33,10 +34,16 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <Search search={search} selectedCountry={selectedCountry} onSearchSubmit={onSearchSubmit} onSearchChange={onSearchChange} onCountryChange={onCountryChange}/>
+    <div className='bg-gradient-to-b from-slate-600 to-slate-800'>
+      <div>
+      <Header />
+      <Search search={search} selectedCountry={selectedCountry} onSearchSubmit={onSearchSubmit} onSearchChange={onSearchChange} onCountryChange={onCountryChange}/>      
+      </div>
+      <div className=''>
       {errorMessage && <h1>{errorMessage}</h1>}
       <CardList searchResults={searchResult}/>
+      </div>
+      
     </div>
   );
 }
