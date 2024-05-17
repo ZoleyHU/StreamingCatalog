@@ -16,7 +16,6 @@ function App() {
       event.preventDefault();
       setSearch(event.target.value);
   }
-  //TODO: new component for a header. It should contain a button to go back to the main page, and also the background.
   //TODO: new component for streaming pics on search results, it should only show the firts 2 uniqe ones then just (...and more) or something
   //TODO: fix possible bug, sometimes multiple copies of the same movie appear in one search
   const onSearchSubmit = async (event: SyntheticEvent) => {
@@ -34,12 +33,12 @@ function App() {
   }
 
   return (
-    <div className='bg-gradient-to-b from-slate-600 to-slate-800'>
+    <div className='min-h-screen bg-gradient-to-b from-slate-600 to-slate-800'>
       <div>
       <Header />
       <Search search={search} selectedCountry={selectedCountry} onSearchSubmit={onSearchSubmit} onSearchChange={onSearchChange} onCountryChange={onCountryChange}/>      
       </div>
-      <div className=''>
+      <div>
       {errorMessage && <h1>{errorMessage}</h1>}
       <CardList searchResults={searchResult}/>
       </div>
