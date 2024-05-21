@@ -16,8 +16,7 @@ function App() {
       event.preventDefault();
       setSearch(event.target.value);
   }
-  //TODO: new component for streaming pics on search results, it should only show the firts 2 uniqe ones then just (...and more) or something
-  //TODO: fix possible bug, sometimes multiple copies of the same movie appear in one search
+
   const onSearchSubmit = async (event: SyntheticEvent) => {
       event.preventDefault();
       const result = await searchShows(search, selectedCountry);
@@ -40,7 +39,7 @@ function App() {
       </div>
       <div>
       {errorMessage && <h1>{errorMessage}</h1>}
-      <CardList searchResults={searchResult}/>
+      <CardList searchResults={searchResult} country={selectedCountry}/>
       </div>
       
     </div>

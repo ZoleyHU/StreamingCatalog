@@ -12,7 +12,7 @@ interface Props {
 const Search : React.FC<Props> = ({search, selectedCountry, onSearchSubmit, onSearchChange, onCountryChange}: Props) : JSX.Element => {
   return (
     <form className='text-center ml-[20%] mr-[20%] mb-2 p-[1%] mt-[2%] bg-slate-800 text-2xl' onSubmit={onSearchSubmit}>
-      <input className='h-9 w-96 text-2xl mr-2' value={search} onChange={onSearchChange}/>
+      <input placeholder='Search shows...' className='h-9 w-96 text-2xl mr-2' value={search} onChange={onSearchChange}/>
       <select className='h-9 w-auto' defaultValue="hu" value={selectedCountry} onChange={(e) => onCountryChange(e)}>
         <option value={"hu"}>Hungary</option>
         <option value={"us"}>United States</option>
