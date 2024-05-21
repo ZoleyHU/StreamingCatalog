@@ -40,7 +40,7 @@ function App() {
       </div>
       <div>
       {errorMessage && <h1>{errorMessage}</h1>}
-      <CardList searchResults={searchResult}/>
+      <CardList searchResults={searchResult} country={selectedCountry}/>
       </div>
       
     </div>
