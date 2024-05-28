@@ -18,10 +18,10 @@ const ShowPage = (props: Props) => {
         initShowData();
     }, [showId, country]);
 
-//TODO: add back button
+//TODO: add header
   return (
     <div className='w-full h-full '>
-      <div className='w-3/4 self-center float-left bg-gray-500'>
+      <div className='w-4/5 m-auto bg-gray-500 flex flex-col items-center'>
         <p>{show?.title}</p>
         <img src={show?.imageSet.verticalPoster.w240} alt={show?.title} />
         <StreamingOptions show={show!} country={country!}/>
