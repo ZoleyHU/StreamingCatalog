@@ -8,17 +8,18 @@ interface Props {
 
 const StreamingOptions = ({show, country}: Props) => {
     const renderStreamingOptions = (streaming: StreamingOption) => {
+        const style = "ml-5 mr-5 text-xl";
         if (streaming.type === "addon") {
-          return <p>Available through addon: {streaming.addon?.name}</p>
+          return <p className={style}>Available through addon: {streaming.addon?.name}</p>
         }
         else if (streaming.type === "rent") {
-          return <p>Available for rent in {streaming.quality} for {streaming.price?.amount} {streaming.price?.currency}</p>
+          return <p className={style}>Available for rent in {streaming.quality} for {streaming.price?.amount} {streaming.price?.currency}</p>
         }
         else if (streaming.type === "buy"){
-          return <p>Available to buy in {streaming.quality} for {streaming.price?.amount} {streaming.price?.currency}</p>
+          return <p className={style}>Available to buy in {streaming.quality} for {streaming.price?.amount} {streaming.price?.currency}</p>
         }
         else if (streaming.type === "subscription") {
-          return <p>Available with active subscription</p>
+          return <p className={style}>Available with active subscription</p>
         }
         else { //streaming.type === "free"
           return <p>Available for free</p>
@@ -26,24 +27,20 @@ const StreamingOptions = ({show, country}: Props) => {
       }
 
   return (
-    <div className='w-2/5 bg-white text-center'>
+    <div className='w-fit bg-white text-center flex flex-col'>
         <p className='text-3xl'>Currently streaming on:</p>               
-        <ul>
             {
             (show !== undefined && show.streamingOptions[country!] !== undefined) ? show.streamingOptions[country!].map((streaming) => {
                 return (
-                    <li>
-                    <div>
+                    <div className='flex flex-row items-center text-lg'>
                         <img src={streaming.service.imageSet.lightThemeImage} alt={streaming.service.name} />
                         {
                         renderStreamingOptions(streaming)
                         } 
                     </div>
-                    
-                    </li>)
+                    )
                 }) : <p>No streaming information currently available</p>
             }
-        </ul>
     </div>
   )
 }

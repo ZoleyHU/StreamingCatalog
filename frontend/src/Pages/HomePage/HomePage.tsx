@@ -31,7 +31,7 @@ const HomePage = (props: Props) => {
     const onCountryChange = (event: ChangeEvent<HTMLSelectElement>) => {
       setSelectedCountry(event.target.value);
     }
-  
+    
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-slate-600 to-slate-800'>
