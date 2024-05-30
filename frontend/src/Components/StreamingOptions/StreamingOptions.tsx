@@ -27,13 +27,15 @@ const StreamingOptions = ({show, country}: Props) => {
       }
 
   return (
-    <div className='w-fit bg-white text-center flex flex-col'>
+    <div className='w-fit h-fit text-center flex flex-col m-10'>
         <p className='text-3xl'>Currently streaming on:</p>               
             {
             (show !== undefined && show.streamingOptions[country!] !== undefined) ? show.streamingOptions[country!].map((streaming) => {
                 return (
                     <div className='flex flex-row items-center text-lg'>
-                        <a href={streaming.link} target='_blank' rel='noreferrer'><img src={streaming.service.imageSet.lightThemeImage} alt={streaming.service.name} /></a> 
+                        <a href={streaming.link} target='_blank' rel='noreferrer'>
+                          <img src={streaming.service.imageSet.darkThemeImage} alt={streaming.service.name}/>
+                        </a> 
                         {
                         renderStreamingOptions(streaming)
                         } 
